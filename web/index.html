@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My Little Journey</title>
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/main.js" defer></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h2>My Little Journey</h2>
+        </div>
+        <div id="menu">
+            <div>
+                <button id="openSignUpFormBtn">Sign Up</button>
+                <button id="openSignInFormBtn">Sign In</button>
+            </div>
+            <div>
+                <output id="userDisplayName"></output>
+                <button id="userBalanceBtn">Balance: <output id="userBalance">0</output>$</button>
+                <button id="userToursBtn">My Tours</button>
+                <button id="logOutBtn">Log Out</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <h1>My Little <span>Journey</span></h1>
+        <form method="post" id="searchTourForm">
+            <div>
+                <input type="text" name="keyword" id="keyword" autocomplete="off" required>
+                <label for="keyword">Where are you going?</label>
+            </div>
+            <div>
+                <button>Search</button>
+            </div>
+        </form>
+        <ul id="foundTours">
+        </ul>
+    </main>
+    <footer>
+        <h5>Made by: <a href="https://vk.com/proxinadu" target="_blank">Ilya Kuliashou</a></h5>
+    </footer>
+
+    <form method="post" id="signInForm" class="hidden">
+        <button id="closeSignInFormBtn" type="button" class="closeBtn"></button>
+        <div>
+            <input type="text" name="userEmail" id="userEmail" autocomplete="off" required>
+            <label for="userEmail">Email</label>
+        </div>
+        <div>
+            <input type="password" name="password" id="password" required>
+            <label for="password">Password</label>
+        </div>
+        <div>
+            <button>Sign In</button>
+        </div>
+        <p>Don't have an account? <a id="switchToSignUpFormBtn">Sign Up!</a></p>
+    </form>
+    <form method="post" id="signUpForm" class="hidden">
+        <button id="closeSignUpFormBtn" type="button" class="closeBtn"></button>
+        <div>
+            <input type="text" name="signUpUsername" id="signUpUsername" autocomplete="off" required>
+            <label for="signUpUsername">Name</label>
+            <p class="invalid-msg">Your name must contain 3-16 alphanumeric <br> characters starting with a letter.</p>
+        </div>
+        <div>
+            <input type="text" name="signUpEmail" id="signUpEmail" autocomplete="off" required>
+            <label for="signUpEmail">Email</label>
+            <p class="invalid-msg">Incorrect email</p>
+        </div>
+        <div>
+            <input type="password" name="signUpPassword" id="signUpPassword" required>
+            <label for="signUpPassword">Password</label>
+            <p class="invalid-msg">Your password must be at least 8 characters <br> long, be of mixed case and also contain a digit.</p>
+        </div>
+        <div>
+            <input type="password" name="confirmPassword" id="confirmPassword" required>
+            <label for="confirmPassword">Confirm Password</label>
+            <p class="invalid-msg">Passwords must match.</p>
+        </div>
+        <div>
+            <input type="checkbox" name="isTravelAgent" id="isTravelAgent">
+            <label for="isTravelAgent"><span></span>Are you a travel agent?</label>
+        </div>
+        <div>
+            <button>Sign Up</button>
+        </div>
+        <p>Already have an account? <a id="switchToSignInFormBtn">Sign In!</a></p>
+    </form>
+    <form method="post" id="addMoneyForm" class="hidden">
+        <button id="closeAddMoneyFormBtn" type="button" class="closeBtn"></button>
+        <div>
+            <input type="number" name="amountToReceived" id="amountToReceived" autocomplete="off" required>
+            <label for="amountToReceived">Amount to be received</label>
+            <p class="invalid-msg">The amount must be positive.</p>
+            <p></p>
+        </div>
+        <div>
+            <button>Add Money</button>
+        </div>
+    </form>
+
+    <div id="errorMsg" class="hidden">
+        <h2>Oops... We have a problem!</h2>
+        <output id="errorText"></output>
+        <button id="closeMsgBtn">Close</button>
+    </div>
+    
+    <div id="loader" class="hidden">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>

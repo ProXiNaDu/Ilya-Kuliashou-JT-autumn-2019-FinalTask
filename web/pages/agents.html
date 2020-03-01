@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>My Little Journey agents</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/agents.css">
+    <script src="../js/agents.js" defer></script>
+</head>
+<body>
+    <header>
+        <div>
+            <h2>My Little Journey</h2>
+        </div>
+        <div>
+            <output id="userDisplayName"></output>
+            <button id="addTourBtn">Add Tour</button>
+            <button id="logOutBtn">Log Out</button>
+        </div>
+    </header>
+    <main>
+        <h1>My Little <span>Journey</span></h1>
+        <form method="post" id="searchForm">
+            <div>
+                <input type="checkbox" name="isUser" id="isUser">
+                <div>
+                    <label for="isUser">Tour</label>
+                    <label for="isUser">User</label>
+                </div>
+            </div>
+            <div>
+                <input type="text" name="keyword" id="keyword" autocomplete="off" required>
+                <label for="keyword">Name</label>
+            </div>
+            <div>
+                <button>Search</button>
+            </div>
+        </form>
+        <ul id="foundItems"></ul>
+    </main>
+    <footer>
+        <h5>Made by: <a href="https://vk.com/proxinadu" target="_blank">Ilya Kuliashou</a></h5>
+    </footer>
+
+    <form method="post" id="editTourForm" class="hidden">
+        <button id="closeEditTourFormBtn" type="button" class="closeBtn"></button>
+        <div>
+            <input type="text" name="tourName" id="tourName" autocomplete="off" required>
+            <label for="tourName">Name</label>
+        </div>
+        <div>
+            <input type="text" name="tourCity" id="tourCity" autocomplete="off" required>
+            <label for="tourCity">City</label>
+        </div>
+        <div>
+            <input type="text" name="tourType" id="tourType" list="tourTypes" autocomplete="off" required>
+            <label for="tourType">Type</label>
+            <datalist id="tourTypes"></datalist>
+        </div>
+        <div>
+            <input type="number" name="tourPrice" id="tourPrice" autocomplete="off" required>
+            <label for="tourPrice">Price</label>
+            <p class="invalid-msg">The price must be positive.</p>
+        </div>
+        <div>
+            <input type="date" name="tourDate" id="tourDate" autocomplete="off" required>
+            <label for="tourDate">Date</label>
+        </div>
+        <div>
+            <textarea name="tourDesc" id="tourDesc" cols="30" rows="10" placeholder="Description"></textarea>
+        </div>
+        <div>
+            <input type="checkbox" name="isLastMinute" id="isLastMinute">
+            <label for="isLastMinute"><span></span>Is it a last-minute tour?</label>
+        </div>
+        <input type="text" name="tourID" id="tourID" value="-1" readonly>
+        <div>
+            <button>Send</button>
+        </div>
+    </form>
+
+    <form method="post" id="addDiscountForm" class="hidden">
+        <button id="closeAddDiscountFormBtn" type="button" class="closeBtn"></button>
+        <div>
+            <input type="number" name="newDiscount" id="newDiscount" autocomplete="off" required>
+            <label for="newDiscount">New Discount</label>
+            <p class="invalid-msg">The discount must be positive.</p>
+        </div>
+        <input type="text" name="userID" id="userID" value="-1" readonly>
+        <div>
+            <button>Change Discount</button>
+        </div>
+    </form>
+
+    <div id="errorMsg" class="hidden">
+        <h2>Oops... We have a problem!</h2>
+        <output id="errorText"></output>
+        <button id="closeMsgBtn">Close</button>
+    </div>
+    
+    <div id="loader" class="hidden">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</body>
+</html>

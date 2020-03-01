@@ -1,0 +1,653 @@
+@font-face {
+	font-family: Montserrat;
+	src:url(../fonts/Montserrat-SemiBold.ttf);
+	font-style: normal;
+	font-weight: 600;
+}
+@font-face {
+	font-family: Montserrat;
+	src:url(../fonts/Montserrat-Medium.ttf);
+	font-style: normal;
+	font-weight: 500;
+}
+@font-face {
+	font-family: Kaushan Script;
+	src:url(../fonts/KaushanScript-Regular.ttf);
+	font-style: normal;
+	font-weight: 400;
+}
+
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: url(../images/b1.jpg) no-repeat center center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+* {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    font-size: 16px;
+    color: #eee;
+    text-shadow: 1px 1px 3px #111;
+}
+
+input:focus,
+button:focus,
+textarea:focus {
+    outline: none;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance:textfield;
+}
+
+input[list]::-webkit-calendar-picker-indicator {
+    display: none;
+}
+input:read-only {
+    display: none;
+}
+
+body > form {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    top: 50%;
+    left: 50%;
+
+    padding: 32px 20px 12px 20px;
+
+    background: url(../images/background.jpeg) no-repeat center center;
+    background-size: cover;
+    box-shadow: 0 2px 10px 1px #111;
+
+    transform: translateX(-50%) translateY(-50%);
+    transition: .5s ease-out;
+}
+
+body > form div {
+    position: relative;
+    margin: 0 0 28px 0;
+    padding: 0;
+    z-index: 1;
+}
+
+body > form textarea {
+    color: #eee;
+    font-weight: 500;
+    border: none;
+    background: rgba(32, 32, 32, 0.6);
+    box-shadow: 0 2px 10px 1px #111;
+    resize: none;
+}
+
+body > form input {
+    padding: 7px;
+    width: 280px;
+    color: #eee;
+    font-weight: 500;
+    border: 3px solid transparent;
+    background: rgba(32, 32, 32, 0.6);
+    box-shadow: 0 2px 10px 1px #111;
+    transition: .15s ease-out;
+}
+body > form .invalid input {
+    border-color: #f1354f;
+}
+
+.invalid-msg {
+    display: block;
+    margin: 4px 0 0 4px;
+    padding: 0;
+    height: 0;
+    font-size: 12px;
+    color: #f1354f;
+    overflow: hidden;
+    transition: .15s ease-out;
+}
+body > form .invalid .invalid-msg {
+    height: 32px;
+}
+
+body > form label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-weight: 500;
+    line-height: 21px;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: .15s ease-out;
+}
+body > form input:focus + label,
+body > form input:valid + label,
+body > form textarea + label,
+body > form input[type="date"] + label {
+    transform: translate(-12px, -34px);
+}
+
+body > form div button {
+    position: relative;
+
+    margin: 0;
+    padding: 10px 20px;
+
+    text-transform: uppercase;
+
+    background: #202020;
+    border: none;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: .15s ease-in;
+}
+body > form div button:hover {
+    background: transparent;
+}
+body > form div button:active {
+    transform: translateY(2px);
+}
+body > form div button::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    bottom: -3px;
+    right: -3px;
+
+    background: linear-gradient(45deg, #d16ad4, #1ebbeb);
+    box-shadow: 0 2px 6px 2px #111;
+
+    transition: .15s ease-in;
+
+    z-index: -1;
+}
+body > form div button:active::before {
+    box-shadow: 0 0 0 0 transparent;
+}
+
+body > form input[type="checkbox"] {
+    display: none;
+}
+
+body > form input[type="checkbox"] + label {
+    display: flex;
+    position: relative;
+    align-items: center;
+    top: 0;
+    left: 0;
+    width: 300px;
+    cursor: pointer;
+    transition: .15s ease-out;
+}
+body > form input[type="checkbox"] + label,
+body > form input[type="checkbox"] + label {
+    transform: none;
+}
+
+body > form input[type="checkbox"] + label span {
+    position: relative;
+    display: inline-block;
+    margin-right: 10px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #eee;
+
+    overflow: hidden;
+
+    transition: .15s ease-out;
+}
+
+body > form input[type="checkbox"] + label span:hover {
+    border-color: #1ebbeb;
+}
+
+body > form input[type="checkbox"] + label span::before,
+body > form input[type="checkbox"] + label span::after {
+    content: '';
+    display: block;
+    position: absolute;
+    
+    height: 3px;
+    background: #eee;
+    transition: .15s ease-out;
+}
+body > form input[type="checkbox"] + label span::before {
+    top: 8px;
+    left: -1px;
+    width: 8px;
+    transform: translate(-10px, -10px) rotate(45deg);
+}
+body > form input[type="checkbox"] + label span::after {
+    top: 6px;
+    left: 2px;
+    width: 16px;
+    transform: translate(-20px, 20px) rotate(-45deg);
+}
+body > form input[type="checkbox"]:checked + label span::before {
+    transform: translate(0, 0) rotate(45deg);
+}
+body > form input[type="checkbox"]:checked + label span::after {
+    transform: translate(0, 0) rotate(-45deg);
+}
+
+body > form a {
+    color: #1ebbeb;
+    cursor: pointer;
+}
+
+body > form > p {
+    margin: 0;
+}
+
+.closeBtn {
+    position: absolute;
+    display: block;
+    align-self: flex-end;
+    top: 2px;
+    right: 2px;
+    width: 18px;
+    height: 18px;
+
+    box-shadow: 0 1px 4px 1px #252525;
+    background: transparent;
+    border: 2px solid #eee;
+
+    cursor: pointer;
+    transition: .15s ease-out;
+}
+.closeBtn::before,
+.closeBtn::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 3px;
+    background: #eee;
+    transition: .15s ease-out;
+}
+.closeBtn::before {
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+.closeBtn::after {
+    transform: translate(-50%, -50%) rotate(-45deg);
+}
+.closeBtn:hover {
+    border-color: #f1354f;
+    background: #171717;
+}
+.closeBtn:hover::before,
+.closeBtn:hover::after {
+    background: #f1354f;
+}
+.closeBtn:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 0 transparent;
+}
+
+#addMoneyForm,
+#addDiscountForm {
+    background: linear-gradient(150deg, #2a2a2a, #171717);
+}
+#addMoneyForm div button::before,
+#addDiscountForm div button::before {
+    background: linear-gradient(45deg, #c79943, #d5ab5f);
+}
+
+header {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    height: 60px;
+    width: 100%;
+    overflow: hidden;
+}
+header > div {
+    display: flex;
+    flex-direction: column;
+    height: 200%;
+}
+header > div > div {
+    display: flex;
+    justify-content: flex-end;
+    height: 200%;
+    transition: .15s ease-in-out;
+}
+header > div.authorized > div {
+    transform: translateY(-100%);
+}
+
+header output {
+    padding: 0 6px;
+    height: 60px;
+    line-height: 60px;
+    transition: .15s ease-out;
+}
+
+header h2 {
+    margin: 0 0 0 20px;
+    line-height: 60px;
+    font-family: 'Kaushan Script', cursive;
+}
+
+header button {
+    padding: 0 6px;
+    min-width: 90px;
+    height: 60px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    transition: .15s ease-out;
+}
+header button:hover {
+    color: #1ebbeb;
+}
+header button:hover > * {
+    color: #1ebbeb;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    width: 100%;
+}
+
+main h1 {
+    margin: 120px 0 90px 0;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 28px;
+    text-align: center;
+}
+main h1 span {
+    display: block;
+    font-family: 'Kaushan Script', cursive;
+    font-size: 44px;
+    text-align: center;
+}
+
+main > form {
+    display: flex;
+    background: rgba(32, 32, 32, 0.6);
+    box-shadow: 0 2px 10px 1px #111;
+}
+main > form div {
+    position: relative;
+}
+
+main > form input {
+    padding: 7px;
+    width: 300px;
+    color: #eee;
+    font-weight: 500;
+    border: 3px solid transparent;
+    background: transparent;
+}
+main > form label {
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    font-weight: 500;
+    line-height: 21px;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: .15s ease-out;
+}
+main > form input:focus + label,
+main > form input:valid + label {
+    transform: translate(-12px, -34px);
+}
+
+main > form button {
+    padding: 0 10px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    transition: .15s ease-out;
+}
+main > form button:hover {
+    color: #1ebbeb;
+}
+
+#foundTours {
+    margin: 60px 0 0 0;
+    padding: 0;
+    width: 500px;
+    list-style: none;
+}
+
+#foundTours li {
+    margin: 0 0 8px 0;
+    line-height: 32px;
+    max-height: 32px;
+    overflow: hidden;
+    background: rgba(32, 32, 32, 0.75);
+    box-shadow: 0 2px 10px 1px #111;
+    transition: .5s ease-out;
+}
+#foundTours li.open {
+    max-height: 400px;
+}
+
+#foundTours li span {
+    padding: 0 10px;
+}
+#foundTours li p {
+    margin: 0;
+    padding: 0 10px;
+}
+
+#foundTours li > div:first-child {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: .15s ease-out;
+}
+#foundTours li > div:first-child:hover {
+    background: rgba(255, 255, 255, 0.15);
+}
+
+#foundTours li button {
+    margin: 10px;
+    box-shadow: 0 1px 4px 1px #252525;
+    background: transparent;
+    border: 2px solid #eee;
+    cursor: pointer;
+    transition: .15s ease-out;
+}
+#foundTours li button:hover {
+    border-color: #1ebbeb;
+    color: #1ebbeb;
+}
+#foundTours li button:active {
+    box-shadow: 0 1px 4px 1px transparent;
+    transform: translateY(2px);
+}
+
+.userDiscount {
+    color: #db4545;
+}
+
+.tourPrice.hot::before {
+    content: "Last Minute";
+    position: relative;
+    margin: 0 6px;
+    padding: 2px 4px;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    color: #db4545;
+    border: 2px solid #db4545;
+    text-shadow: none;
+}
+
+footer {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100%;
+}
+footer > * {
+    margin: 16px 20px;
+    color: #eee;
+}
+footer a {
+    display: block;
+    color: #dff4f9;
+    text-decoration: none;
+    text-shadow: 0 0 4px #56ddfb;
+}
+
+#errorMsg {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+    padding: 20px 40px;
+    background: #202020;
+    box-shadow: 0 2px 6px 2px #111;
+    text-align: center;
+    transform: translateX(-50%) translateY(-50%);
+    transition: .5s ease-out;
+}
+
+#errorMsg button {
+    margin: 0;
+    padding: 8px 16px;
+
+    border: 2px solid #eee;
+    border-radius: 30px;
+    background: transparent;
+    box-shadow: 0 2px 6px 2px #111;
+
+    user-select: none;
+    cursor: pointer;
+
+    transition: .15s ease-in;
+}
+#errorMsg button:hover {
+    border-color: #1ebbeb;
+    background: #1ebbeb;
+}
+#errorMsg button:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 0 transparent;
+}
+
+#errorMsg h2 {
+    margin: 0;
+}
+
+#errorMsg p,
+#errorMsg output {
+    margin: 16px 0;
+}
+
+#loader {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 50%;
+    left: 50%;
+
+    transform: translateX(-50%) translateY(-50%);
+    transition: .2s ease-in;
+}
+#loader span {
+    display: block;
+    margin: 4px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+
+    background: #eee;
+    box-shadow: 0 0 10px 1px #555;
+
+    animation: loader 1s ease-in-out 0s infinite normal none;
+}
+#loader span:nth-child(2) {
+    animation-delay: .2s;
+}
+#loader span:nth-child(3) {
+    animation-delay: .4s;
+}
+#loader span:nth-child(4) {
+    animation-delay: .6s;
+}
+#loader span:nth-child(5) {
+    animation-delay: .8s;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateX(-50%) translateY(100px);
+    z-index: -1;
+}
+#loader.hidden {
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.tour,
+.user {
+    opacity: 0;
+    transform: translateY(20px);
+    -webkit-animation: slide-up .5s ease-out 0s normal forwards;
+    -o-animation: slide-up .5s ease-out 0s normal forwards;
+    animation: slide-up .5s ease-out 0s normal forwards;
+}
+
+@keyframes slide-up {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loader {
+    0% {
+        transform: translateY(-5px) scale(1);
+    }
+    50% {
+        transform: translateY(5px) scale(.5);
+    }
+    100% {
+        transform: translateY(-5px) scale(1);
+    }
+}
